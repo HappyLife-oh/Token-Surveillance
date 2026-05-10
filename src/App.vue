@@ -88,7 +88,7 @@ onUnmounted(() => {
 
         <!-- Right: Stats & Chart -->
         <div class="panel right-panel">
-          <div class="panel-title">
+          <div class="panel-title drag-handle">
             <div class="title-dot purple" />
             <span>深度求索</span>
           </div>
@@ -181,10 +181,10 @@ html, body {
 .orb-2 { width: 250px; height: 250px; background: rgba(139,92,246,0.06); bottom: -40px; right: 10%; }
 
 /* Dashboard */
-.dashboard { position: relative; z-index: 1; display: flex; gap: 12px; padding: 16px; width: 100%; height: 100%; align-items: center; justify-content: center; -webkit-app-region: drag; }
+.dashboard { position: relative; z-index: 1; display: flex; gap: 12px; padding: 16px; width: 100%; height: 100%; align-items: center; justify-content: center; }
 
 /* Glass panel base */
-.panel { -webkit-app-region: no-drag;
+.panel {
   background: rgba(15,23,42,0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -201,6 +201,8 @@ html, body {
 
 /* Panel titles */
 .panel-title { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #e2e8f0; letter-spacing: 0.3px; }
+.drag-handle { -webkit-app-region: drag; }
+.panel-title button, .panel-title .filter-tab { -webkit-app-region: no-drag; }
 .title-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .title-dot.purple { background: #8b5cf6; box-shadow: 0 0 8px rgba(139,92,246,0.5); }
 

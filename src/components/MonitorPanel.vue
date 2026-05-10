@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <div class="panel">
-    <div class="panel-title">
+    <div class="panel-title drag-handle">
       <div class="title-dot green" />
       <span>模型对比 · 调用频率</span>
     </div>

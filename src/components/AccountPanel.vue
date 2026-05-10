@@ -17,7 +17,7 @@ defineProps({
 
 <template>
   <div class="panel">
-    <div class="panel-title">
+    <div class="panel-title drag-handle">
       <div class="title-dot blue" />
       <span>账户概览</span>
     </div>
@@ -84,6 +84,7 @@ defineProps({
 <style scoped>
 .panel { background: rgba(15,23,42,0.55); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(148,163,184,0.08); border-radius: 16px; padding: 18px 20px; width: 240px; height: 440px; display: flex; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
 .panel-title { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 13px; font-weight: 600; color: #e2e8f0; letter-spacing: 0.3px; }
+.drag-handle { -webkit-app-region: drag; }
 .title-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .title-dot.blue { background: #3b82f6; box-shadow: 0 0 8px rgba(59,130,246,0.5); }
 .section { margin-bottom: 12px; }
