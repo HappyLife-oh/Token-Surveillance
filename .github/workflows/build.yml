@@ -21,11 +21,11 @@ jobs:
 
       - run: npx vite build
 
-      - run: npx electron-builder --win portable
+      - run: npx electron-builder --win portable --config
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v4
         with:
           name: Token-Surveillance
-          path: release/*.exe
+          path: release/**/*.exe

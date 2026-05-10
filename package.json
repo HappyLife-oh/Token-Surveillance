@@ -10,6 +10,22 @@
     "electron:build": "vite build && electron-builder",
     "electron:start": "electron ."
   },
+  "build": {
+    "appId": "com.tokensurveillance.app",
+    "productName": "Token Surveillance",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "assets/**/*"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "assets/icon.png"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
