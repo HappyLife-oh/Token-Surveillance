@@ -21,11 +21,18 @@ jobs:
 
       - run: npx vite build
 
-      - run: npx electron-builder --win portable --config
+      - name: Build executable
+        run: npx electron-builder --win portable
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: List output
+        run: Get-ChildItem -Path release -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName, Length
+
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: Token-Surveillance
-          path: release/**/*.exe
+          path: |
+            release/**/*.exe
+            release/**/*.zip
