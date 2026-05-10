@@ -3,8 +3,8 @@ name: Build Windows
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -21,18 +21,27 @@ jobs:
 
       - run: npx vite build
 
-      - name: Build executable
+      - name: Build portable exe
         run: npx electron-builder --win portable
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: List output
-        run: Get-ChildItem -Path release -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName, Length
-
-      - uses: actions/upload-artifact@v4
-        if: always()
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
           name: Token-Surveillance
-          path: |
-            release/**/*.exe
-            release/**/*.zip
+          path: release/**/*.exe
+
+  release:
+    needs: build
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Token-Surveillance
+      - name: Upload to release
+        run: |
+          gh release upload ${{ github.event.release.tag_name }} *.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
