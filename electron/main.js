@@ -4,11 +4,7 @@ const fs = require('fs')
 const https = require('https')
 const { fork } = require('child_process')
 
-let tray = null
-let win = null
-let isQuitting = false
 let proxyProcess = null
-
 let tray = null
 let win = null
 let isQuitting = false
